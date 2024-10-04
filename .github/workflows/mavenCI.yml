@@ -11,10 +11,10 @@ name: Java CI with Maven
 permissions:
   contents: write
 
-on: 
-  push:
-    branches:
-      - '**'
+on:
+
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
