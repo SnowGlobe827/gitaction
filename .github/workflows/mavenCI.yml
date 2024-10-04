@@ -13,7 +13,9 @@ permissions:
 
 on:
   push:
-    branches: [ "main" ]
+    branches: 
+      - test2
+      
   pull_request:
     branches: [ "main" ]
 
