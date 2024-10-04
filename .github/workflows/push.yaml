@@ -20,5 +20,5 @@ jobs:
         title: "Automated Pull Request"
         body: "This pull request was created automatically from the branch ${{ github.ref_name }}."
         base: main  # main 브랜치로 병합할 PR 생성
-        head: ${{ github.ref_name }}  # 현재 push된 브랜치
-        draft: false  # Draft 상태가 아닌 실제 PR로 생성
+        head: ${{ github.ref }} 
+        draft: false  
