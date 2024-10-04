@@ -12,13 +12,10 @@ permissions:
   contents: write
 
 on:
-  push:
+  pull_request:
     branches:
       - 'test1'
       - 'test2'
-      
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
 
