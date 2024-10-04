@@ -54,12 +54,12 @@ jobs:
         directory: ./git001
 
     #Merge
-    - name: Marge all branches
+    - name: Merge all branches
       run:
         git checkout main
         git merge test1 || echo "No changes from test1"
         git merge test2 || echo "No changes from test2"
-        git push origin main
+        git push main
       env:
         GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
         
