@@ -14,7 +14,7 @@ jobs:
       
       - name: Create Pull Request
         run: |
-          BRANCH_NAME=${GITHUB_REF#refs/heads/}
+          BRANCH_NAME=${GIT_REF#refs/heads/}
           gh pr create --base main --head "$BRANCH_NAME" --title "Auto PR: $BRANCH_NAME to Main" --body "This pull request was automatically generated."
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
