@@ -6,7 +6,8 @@ permissions:
 on:
   push:
     branches:
-      - '**'  # 모든 브랜치에서 push 이벤트를 수신하도록 설정
+      - test1
+      - test2
 
 jobs:
   create-pull-request:
