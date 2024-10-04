@@ -19,6 +19,6 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         title: "Automated Pull Request"
         body: "This pull request was created automatically from the branch ${{ github.ref_name }}."
-        base: main  # main 브랜치로 병합할 PR 생성
-        head: ${{ github.ref }} 
+        base: main
+        head: ${{ github.ref_name }} 
         draft: false  
