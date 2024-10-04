@@ -13,15 +13,13 @@ permissions:
 
 on:
   push:
-    branches: 
+    branches:
+      - test1
       - test2
-      
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
   build:
-
+    
     runs-on: ubuntu-latest
 
     steps:
@@ -36,8 +34,29 @@ jobs:
       run: mvn -B package --file pom.xml
       working-directory: ./git001
 
+    # Run unit tests
+    - name: Run Tests
+      run: mvn test --file pom.xml
+      working-directory: ./git001
+    # configure Git
+    - name: Configure Git
+      run:
+        git config --global user.name "${{ github.actor }}"
+        git config --global user.email "${{ secrets.GIT_USER_EMAIL }}"
+
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
       uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
       with:
         directory: ./git001
+
+    #Merge
+    - name: Marge all branches
+      run:
+        git checkout main
+        git merge test1 || echo "No changes from test1"
+        git merge test2 || echo "No changes from test2"
+        git push origin main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+        
